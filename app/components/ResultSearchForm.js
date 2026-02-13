@@ -16,7 +16,7 @@ export default async function ResultSearchForm({ searchParams }) {
             {clients.length > 0 ? (
                 clients.map(client => (
                     <Link href={`/clients/${client.id}`} key={client.id}>
-                        <li className="border-b-1 border-gray-300 w-full">
+                        <li className="border-b border-gray-300 w-full">
                             {client.first_name} {client.last_name}
                         </li>
                     </Link>
