@@ -10,7 +10,7 @@ const supabase = createClient(
 
 (async () => {
   console.log('⏳ Emptying database...');
-  
+
   const { error: wipeErr } = await supabase
     .from('clients')
     .delete()
@@ -23,7 +23,7 @@ const supabase = createClient(
   }
 
   console.log('⏳ Seeding database...');
-  
+
   const { data: clients, error: cErr } = await supabase
     .from('clients')
     .insert([
@@ -42,10 +42,10 @@ const supabase = createClient(
   const { data: accounts, error: aErr } = await supabase
     .from('accounts')
     .insert([
-      { client_id: clients[0].id, balance: 2500.00, type: 'checking', name: 'Main Checking' }, 
+      { client_id: clients[0].id, balance: 2500.00, type: 'checking', name: 'Main Checking' },
       { client_id: clients[0].id, balance: 15000.00, type: 'savings', name: 'Emergency Fund' },
-      { client_id: clients[1].id, balance: 450.50, type: 'checking', name: 'Everyday Checking' }, 
-      { client_id: clients[2].id, balance: 0.99, type: 'checking', name: 'Basic Checking' },   
+      { client_id: clients[1].id, balance: 450.50, type: 'checking', name: 'Everyday Checking' },
+      { client_id: clients[2].id, balance: 0.99, type: 'checking', name: 'Basic Checking' },
       { client_id: clients[3].id, balance: 120000.00, type: 'savings', name: 'Retirement Savings' },
       { client_id: clients[4].id, balance: 999999.99, type: 'checking', name: 'Primary Checking' }
     ])
@@ -60,12 +60,12 @@ const supabase = createClient(
     .insert([
       { account_id: accounts[0].id, amount: 1200.00, type: 'deposit', description: 'Monthly Salary' },
       { account_id: accounts[0].id, amount: 45.00, type: 'withdraw', description: 'Grocery Store' },
-      { 
-        account_id: accounts[0].id, 
-        source_account_id: accounts[4].id, 
-        amount: 500.00, 
-        type: 'transfer', 
-        description: 'Payment from Ada' 
+      {
+        account_id: accounts[0].id,
+        source_account_id: accounts[4].id,
+        amount: 500.00,
+        type: 'transfer',
+        description: 'Payment from Ada'
       },
       { account_id: accounts[5].id, amount: 10000.00, type: 'deposit', description: 'Mining Reward' }
     ]);
